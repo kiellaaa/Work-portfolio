@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ma. Daniella B. Pamintuan — Portfolio 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --pink: #FF2D8B;
+    --pink-light: #FFD6EC;
+    --pink-pale: #FFF0F7;
+    --dark: #1A1A1A;
+    --gray: #555;
+    --light: #fff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #fff;
+    color: var(--dark);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 60px;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--pink-light);
+  }
+
+  .nav-logo {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 1.1rem;
+    color: var(--pink);
+    letter-spacing: 2px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--dark);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--pink); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 100px 60px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-blob {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--pink-pale);
+    pointer-events: none;
+  }
+
+  .blob1 { width: 500px; height: 500px; top: -100px; right: -100px; }
+  .blob2 { width: 300px; height: 300px; bottom: 0; right: 200px; background: var(--pink-light); opacity: 0.5; }
+
+  /* pink arc lines */
+  .arc {
+    position: absolute;
+    border: 2px solid var(--pink);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .arc1 { width: 400px; height: 400px; top: -50px; left: 30%; border-color: var(--pink); opacity: 0.3; }
+
+  .hero-text { position: relative; z-index: 2; }
+
+  .hero-eyebrow {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-bottom: 16px;
+  }
+
+  .hero-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    line-height: 1.05;
+    color: var(--dark);
+    margin-bottom: 8px;
+  }
+
+  .hero-subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 1rem;
+    color: var(--gray);
+    margin-bottom: 28px;
+    letter-spacing: 1px;
+  }
+
+  .hero-bio {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--gray);
+    max-width: 480px;
+    margin-bottom: 40px;
+  }
+
+  .btn-pink {
+    display: inline-block;
+    background: var(--pink);
+    color: #fff;
+    padding: 14px 36px;
+    border-radius: 50px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-right: 16px;
+  }
+
+  .btn-pink:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,45,139,0.35); }
+
+  .btn-outline {
+    display: inline-block;
+    border: 2px solid var(--pink);
+    color: var(--pink);
+    padding: 12px 32px;
+    border-radius: 50px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .btn-outline:hover { background: var(--pink); color: #fff; }
+
+  .hero-image-wrap {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero-photo-circle {
+    width: 340px;
+    height: 340px;
+    border-radius: 50%;
+    background: var(--pink-light);
+    overflow: hidden;
+    border: 5px solid var(--pink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    color: var(--pink);
+    font-weight: 600;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .dots {
+    display: flex;
+    gap: 8px;
+    margin-top: 50px;
+  }
+
+  .dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--pink);
+  }
+
+  /* ── SECTION SHARED ── */
+  section {
+    padding: 90px 60px;
+  }
+
+  .section-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-bottom: 10px;
+  }
+
+  .section-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--dark);
+    margin-bottom: 56px;
+  }
+
+  /* ── ABOUT / SKILLS ── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .skill-pill {
+    background: var(--pink-pale);
+    border: 1px solid var(--pink-light);
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-size: 0.85rem;
+    color: var(--dark);
+    font-weight: 500;
+    text-align: center;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .skill-pill:hover { background: var(--pink); color: #fff; }
+
+  /* ── EDUCATION ── */
+  .edu-bg { background: var(--pink-pale); }
+
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-width: 700px;
+  }
+
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 32px;
+    padding: 32px 0;
+    border-bottom: 1px solid var(--pink-light);
+    position: relative;
+  }
+
+  .timeline-item:last-child { border-bottom: none; }
+
+  .tl-year {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--pink);
+    padding-top: 4px;
+  }
+
+  .tl-school {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--dark);
+    margin-bottom: 4px;
+  }
+
+  .tl-detail {
+    font-size: 0.88rem;
+    color: var(--gray);
+    line-height: 1.6;
+  }
+
+  /* ── EXPERIENCE ── */
+  .exp-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 28px;
+  }
+
+  .exp-card {
+    background: #fff;
+    border: 1px solid var(--pink-light);
+    border-radius: 20px;
+    padding: 36px;
+    transition: box-shadow 0.25s, transform 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .exp-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--pink);
+    border-radius: 20px 20px 0 0;
+  }
+
+  .exp-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(255,45,139,0.12); }
+
+  .exp-date {
+    font-size: 0.75rem;
+    color: var(--pink);
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .exp-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 1.05rem;
+    margin-bottom: 4px;
+    color: var(--dark);
+  }
+
+  .exp-firm {
+    font-size: 0.85rem;
+    color: var(--gray);
+    margin-bottom: 20px;
+  }
+
+  .exp-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .exp-bullets li {
+    font-size: 0.83rem;
+    color: var(--gray);
+    line-height: 1.6;
+    padding-left: 14px;
+    position: relative;
+  }
+
+  .exp-bullets li::before {
+    content: '●';
+    position: absolute;
+    left: 0;
+    color: var(--pink);
+    font-size: 0.5rem;
+    top: 6px;
+  }
+
+  /* ── ACHIEVEMENTS ── */
+  .ach-bg { background: var(--pink-pale); }
+
+  .ach-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+
+  .ach-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 24px 28px;
+    border-left: 4px solid var(--pink);
+    font-size: 0.88rem;
+    color: var(--dark);
+    line-height: 1.5;
+    transition: box-shadow 0.2s;
+  }
+
+  .ach-card:hover { box-shadow: 0 8px 24px rgba(255,45,139,0.1); }
+
+  .ach-year {
+    font-size: 0.72rem;
+    color: var(--pink);
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  /* ── CONTACT ── */
+  .contact-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .contact-info { display: flex; flex-direction: column; gap: 20px; }
+
+  .contact-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .contact-icon {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--pink-pale);
+    border: 2px solid var(--pink-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .contact-text { font-size: 0.9rem; color: var(--gray); line-height: 1.6; }
+  .contact-text strong { color: var(--dark); font-weight: 600; display: block; }
+
+  .thank-you {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-style: italic;
+    color: var(--dark);
+    line-height: 1;
+  }
+
+  .thank-you span { color: var(--pink); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 28px;
+    font-size: 0.78rem;
+    letter-spacing: 1px;
+  }
+
+  footer span { color: var(--pink); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; padding: 90px 24px 60px; }
+    .hero-image-wrap { display: none; }
+    section { padding: 60px 24px; }
+    .about-grid, .contact-inner { grid-template-columns: 1fr; }
+    .timeline-item { grid-template-columns: 1fr; gap: 8px; }
+  }
+
+  /* fade-in on scroll */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: none;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">MDB·P</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#achievements">Achievements</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="blob1 hero-blob"></div>
+  <div class="blob2 hero-blob"></div>
+  <div class="arc arc1"></div>
+
+  <div class="hero-text fade-in">
+    <p class="hero-eyebrow">Portfolio 2026</p>
+    <h1 class="hero-title">Hello,<br>I'm Ma. Daniella</h1>
+    <p class="hero-subtitle">Legal Assistant · Paralegal · Legal Virtual Assistant</p>
+    <p class="hero-bio">
+      I aspire to be part of a law firm that provides opportunities for the enhancement of my skills and knowledge, allowing me to contribute to the firm's growth while aligning with my future career as a lawyer. I am capable of working efficiently in a remote environment and already have experience handling legal and administrative tasks for U.S.-based law firms.
+    </p>
+    <a href="#contact" class="btn-pink">Get in Touch</a>
+    <a href="#experience" class="btn-outline">View Experience</a>
+    <div class="dots">
+      <div class="dot"></div>
+      <div class="dot" style="opacity:0.4"></div>
+      <div class="dot" style="opacity:0.4"></div>
+    </div>
+  </div>
+
+  <div class="hero-image-wrap fade-in">
+    <div class="hero-photo-circle">
+      📸<br><br>Add your photo here<br><small style="color:var(--gray)">(replace this div with an &lt;img&gt; tag)</small>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT / SKILLS -->
+<section id="about">
+  <div class="about-grid fade-in">
+    <div>
+      <p class="section-label">Who I Am</p>
+      <h2 class="section-title" style="margin-bottom:24px">About Me</h2>
+      <p style="font-size:0.95rem;line-height:1.9;color:var(--gray);margin-bottom:20px">
+        I'm a 20-year-old Bachelor of Legal Management student at Pampanga State University, currently in my second year. I've been working in legal support since high school — first as a work immersion student, then as a legal apprentice, and now as a remote case manager for a U.S.-based law firm in Houston, Texas.
+      </p>
+      <p style="font-size:0.95rem;line-height:1.9;color:var(--gray)">
+        I handle everything from drafting demand letters and spoliation notices to managing e-filing systems like Jubilee Pro, BK Docs, and BlueStylus — all from a remote setup. I'm adaptable, highly organized, and deeply committed to accuracy in every document I produce.
+      </p>
+    </div>
+    <div>
+      <p class="section-label">What I Bring</p>
+      <h2 class="section-title" style="margin-bottom:24px">Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-pill">Legal Document Drafting</div>
+        <div class="skill-pill">Case Management</div>
+        <div class="skill-pill">Legal Research</div>
+        <div class="skill-pill">E-Filing Systems</div>
+        <div class="skill-pill">Client Communication</div>
+        <div class="skill-pill">AI Tools & Applications</div>
+        <div class="skill-pill">Time Management</div>
+        <div class="skill-pill">Critical Thinking</div>
+        <div class="skill-pill">Remote Work</div>
+        <div class="skill-pill">Document Management</div>
+        <div class="skill-pill">Leadership</div>
+        <div class="skill-pill">Team Collaboration</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="edu-bg" id="education">
+  <p class="section-label">Academic Background</p>
+  <h2 class="section-title">Education</h2>
+
+  <div class="timeline fade-in">
+    <div class="timeline-item">
+      <div class="tl-year">2024–2028</div>
+      <div>
+        <div class="tl-school">Pampanga State University</div>
+        <div class="tl-detail">Bachelor of Legal Management — currently enrolled (2nd year)</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-year">2018–2024</div>
+      <div>
+        <div class="tl-school">Pampanga High School</div>
+        <div class="tl-detail">Humanities and Social Science Strand · Brgy. Lourdes Blvd., San Fernando, Pampanga</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-year">2013–2017</div>
+      <div>
+        <div class="tl-school">San Fernando Elementary School</div>
+        <div class="tl-detail">Elementary Education</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-year">2009–2012</div>
+      <div>
+        <div class="tl-school">Santo Niño Progressive Archdiocesan School</div>
+        <div class="tl-detail">Primary Education</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <p class="section-label">Work History</p>
+  <h2 class="section-title">Experience</h2>
+  <div class="exp-cards fade-in">
+
+    <div class="exp-card">
+      <div class="exp-date">Feb 2025 – Apr 2026 · Full-Time</div>
+      <div class="exp-title">Remote Legal Assistant & Case Manager</div>
+      <div class="exp-firm">Valerie Willis Law Firm & Associates, P.C. · Houston, Texas (Remote)</div>
+      <ul class="exp-bullets">
+        <li>Drafted legal documents for personal injury, real estate, and bankruptcy cases including pleadings, demand letters, spoliation letters, and correspondence</li>
+        <li>Managed e-filing processes using Jubilee Pro, BK Docs, and BlueStylus</li>
+        <li>Assisted attorneys with case management and document preparation in a fast-paced remote environment</li>
+        <li>Communicated with clients professionally regarding case updates and inquiries</li>
+        <li>Maintained organized case files and ensured timely submission of all legal requirements</li>
+      </ul>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-date">Sep 2024 – Mar 2026 · WFH</div>
+      <div class="exp-title">Pleader</div>
+      <div class="exp-firm">Toralba Law Offices and Associates · San Fernando, Pampanga</div>
+      <ul class="exp-bullets">
+        <li>Drafted pleadings, motions, affidavits, demand letters, complaints, and answers for civil, criminal, labor, and administrative cases</li>
+        <li>Conducted legal research on laws, jurisprudence, and regulations</li>
+        <li>Assisted lawyers in case analysis, fact gathering, and preparation of supporting documents</li>
+        <li>Monitored case deadlines, hearings, and submission requirements</li>
+        <li>Communicated with clients on case updates and legal procedures</li>
+      </ul>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-date">May 2024 – Aug 2024</div>
+      <div class="exp-title">Legal Apprentice</div>
+      <div class="exp-firm">Caylao Soliman Santiago & Caylao Law Offices · San Fernando, Pampanga</div>
+      <ul class="exp-bullets">
+        <li>Assisted in drafting legal documents, pleadings, motions, and affidavits for civil, criminal, and labor cases</li>
+        <li>Conducted legal research and gathered jurisprudence and supporting documents</li>
+        <li>Performed docketing, filing, and organization of case records</li>
+        <li>Coordinated with clients and court personnel regarding documentation requirements</li>
+        <li>Observed court proceedings and gained practical exposure to litigation</li>
+      </ul>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-date">Work Immersion · 65 Hours</div>
+      <div class="exp-title">Work Immersion Student</div>
+      <div class="exp-firm">Caylao Soliman Santiago & Caylao Law Offices · San Fernando, Pampanga</div>
+      <ul class="exp-bullets">
+        <li>Assisted with secretarial and administrative tasks in a legal office environment</li>
+        <li>Performed docketing and filing of legal documents and case records</li>
+        <li>Scheduled appointments and coordinated meetings and hearings</li>
+        <li>Conducted basic legal research and maintained confidentiality of client information</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section class="ach-bg" id="achievements">
+  <p class="section-label">Recognition</p>
+  <h2 class="section-title">Achievements</h2>
+  <div class="ach-grid fade-in">
+    <div class="ach-card">
+      <div class="ach-year">2009–Present</div>
+      With Honors — Consistent Academic Awardee
+    </div>
+    <div class="ach-card">
+      <div class="ach-year">2024</div>
+      Recipient — Ateneo de Manila University Scholarship for College
+    </div>
+    <div class="ach-card">
+      <div class="ach-year">2024</div>
+      Student Council Treasurer — Pampanga High School Supreme Secondary Learner Government
+    </div>
+    <div class="ach-card">
+      <div class="ach-year">2024–2025</div>
+      Recipient — San Sebastian College-Recoletos Manila Scholarship (1st Year, 1st Semester)
+    </div>
+    <div class="ach-card">
+      <div class="ach-year">2023</div>
+      Public Information Officer — Barkada Kontra Droga Club, Pampanga High School
+    </div>
+    <div class="ach-card">
+      <div class="ach-year">2022</div>
+      Recipient — De La Salle University Integrated School Full Scholarship for Senior High School
+    </div>
+    <div class="ach-card">
+      <div class="ach-year">2022</div>
+      Recipient — San Sebastian College-Recoletos Manila Full Scholarship for Senior High School
+    </div>
+    <div class="ach-card">
+      <div class="ach-year">2021–2022</div>
+      Science Club Representative & Councilor (YES-O) — Pampanga High School
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="fade-in">
+      <p class="thank-you">Thank<br><span>you.</span></p>
+      <p style="margin-top:24px;font-size:0.95rem;color:var(--gray);line-height:1.8;max-width:380px">
+        I'm open to new opportunities in legal support, paralegal work, and remote legal VA roles. Feel free to reach out!
+      </p>
+    </div>
+    <div class="contact-info fade-in">
+      <p class="section-label">Get in Touch</p>
+      <h2 class="section-title" style="margin-bottom:32px">Contact Details</h2>
+
+      <div class="contact-row">
+        <div class="contact-icon">📱</div>
+        <div class="contact-text">
+          <strong>WhatsApp / Phone</strong>
+          09552101437
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon">✉️</div>
+        <div class="contact-text">
+          <strong>Email</strong>
+          madaniellabasonpamintuan@gmail.com
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon">📍</div>
+        <div class="contact-text">
+          <strong>Address</strong>
+          #82, Purok 2, Magliman, City of San Fernando, Pampanga, Philippines
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon">💼</div>
+        <div class="contact-text">
+          <strong>LinkedIn</strong>
+          <a href="https://www.linkedin.com/in/ma-daniella-pamintuan-28587233b" target="_blank" style="color:var(--pink);text-decoration:none">ma-daniella-pamintuan-28587233b</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 <span>Ma. Daniella B. Pamintuan</span> · All Rights Reserved
+</footer>
+
+<script>
+  // fade-in on scroll
+  const els = document.querySelectorAll('.fade-in');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  els.forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
